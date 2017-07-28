@@ -1,0 +1,170 @@
+v 20130925 2
+C 40000 40000 0 0 0 title-B.sym
+C 44200 45000 1 90 0 asic-cap-2.sym
+{
+T 43800 46000 5 8 0 0 90 0 1
+device=CAPACITOR
+T 43500 45700 5 10 1 1 0 0 1
+refdes=Cs
+T 43500 45200 5 10 1 1 0 0 1
+value=1n
+}
+C 42700 44100 1 90 0 voltage-1.sym
+{
+T 42200 44200 5 10 0 0 90 0 1
+device=VOLTAGE_SOURCE
+T 41900 44700 5 10 1 1 0 0 1
+refdes=Vtest
+T 41000 44300 5 10 1 1 0 0 1
+value=sin(0.1 1 1GHz)
+}
+N 42500 45000 42500 46300 4
+N 42500 46300 44000 46300 4
+N 44000 45900 44000 46300 4
+C 42300 43600 1 0 0 ground.sym
+N 42500 44100 42500 43900 4
+C 48200 43100 1 270 1 asic-cap-2.sym
+{
+T 48600 44100 5 8 0 0 90 2 1
+device=CAPACITOR
+T 48900 43800 5 10 1 1 0 6 1
+refdes=CL
+T 48900 43300 5 10 1 1 0 6 1
+value=1n
+}
+C 46900 42400 1 0 1 Gm2.sym
+{
+T 45605 41900 5 10 0 0 0 6 1
+device=GM2
+T 45905 43100 5 10 1 1 0 6 1
+refdes=U2
+T 45605 41300 5 10 0 0 0 6 1
+numslots=0
+T 45605 41100 5 10 0 0 0 6 1
+source=Gm2.net
+T 46900 42400 5 10 0 0 0 0 1
+model-name=GM2
+T 46900 42400 5 10 0 0 0 0 1
+symversion=1.0
+T 46900 42400 5 10 0 0 0 0 1
+footprint=none
+}
+C 48200 42500 1 0 0 ground.sym
+N 48400 44000 48400 44500 4
+N 46300 44500 48400 44500 4
+{
+T 46300 44500 5 10 0 0 0 0 1
+netname=Vc
+}
+N 48400 43100 48400 42800 4
+N 47400 44500 47400 42700 4
+N 44000 42700 44000 45000 4
+N 44000 44500 45200 44500 4
+{
+T 44000 44500 5 10 0 0 0 0 1
+netname=Vx
+}
+N 44000 42700 44600 42700 4
+C 45200 44200 1 0 0 INV1-1.sym
+{
+T 45600 44800 5 10 1 1 0 0 1
+refdes=X1
+T 46000 45900 5 10 0 1 0 0 1
+device=INV1
+T 46000 45700 5 10 0 0 0 0 1
+model-name=INV1
+T 46000 44900 5 10 0 0 0 0 1
+symversion=1.0
+T 46000 44200 5 10 0 0 0 0 1
+footprint=none
+T 45200 44200 5 10 0 0 0 0 1
+source=CMOS_Inverter.net
+}
+N 46900 42700 47400 42700 4
+C 50800 47500 1 0 0 vdc-1.sym
+{
+T 51500 48350 5 10 0 0 0 0 1
+device=VOLTAGE_SOURCE
+T 51500 48550 5 10 0 0 0 0 1
+footprint=none
+T 51500 48150 5 10 1 1 0 0 1
+refdes=Vd
+T 51500 47950 5 10 1 1 0 0 1
+value='SUPPLY'
+}
+C 51000 47200 1 0 0 gnd-1.sym
+C 53000 47500 1 0 0 vdc-1.sym
+{
+T 53700 48350 5 10 0 0 0 0 1
+device=VOLTAGE_SOURCE
+T 53700 48550 5 10 0 0 0 0 1
+footprint=none
+T 53700 48650 5 10 1 1 0 0 1
+refdes=Vs
+T 53700 48450 5 10 1 1 0 0 1
+value=0V
+}
+C 53200 47200 1 0 0 gnd-1.sym
+N 53300 49500 53300 48700 4
+{
+T 53300 49500 5 10 1 1 0 0 1
+netname=Vss
+}
+N 51100 49500 51100 48700 4
+{
+T 51100 49500 5 10 1 1 0 0 1
+netname=Vdd
+}
+C 45300 47600 1 0 0 spice-directive-1.sym
+{
+T 45400 47900 5 10 0 1 0 0 1
+device=directive
+T 45400 48000 5 10 1 1 0 0 1
+refdes=A3
+T 45400 47700 5 10 1 1 0 0 1
+value=.AC lin 10000000 0.1 1GHz
+}
+C 45300 48600 1 0 0 spice-directive-1.sym
+{
+T 45400 48900 5 10 0 1 0 0 1
+device=directive
+T 45400 49000 5 10 1 1 0 0 1
+refdes=A2
+T 45300 48600 5 10 1 1 0 0 1
+value=.GLOBAL Vdd Vss
+}
+C 45200 50000 1 0 0 spice-directive-1.sym
+{
+T 45300 50300 5 10 0 1 0 0 1
+device=directive
+T 45300 50400 5 10 1 1 0 0 1
+refdes=A1
+T 45200 49800 5 10 1 1 0 0 2
+value=.INCLUDE CMOS_Inverter.net
+.INCLUDE Gm2.net
+}
+C 42000 49700 1 0 0 spice-directive-1.sym
+{
+T 42100 50000 5 10 0 1 0 0 1
+device=directive
+T 42100 50100 5 10 1 1 0 0 1
+refdes=A5
+T 42100 49800 5 10 1 1 0 0 1
+value=.PARAM SUPPLY=3v
+}
+C 42000 48600 1 0 0 spice-directive-1.sym
+{
+T 42100 48900 5 10 0 1 0 0 1
+device=directive
+T 42100 49000 5 10 1 1 0 0 1
+refdes=A4
+T 42000 48000 5 10 1 1 0 0 4
+value=.options TEMP=25
+.options SCALE=1u
+.MODEL nch NMOS
+.MODEL pch PMOS
+}
+T 45400 47300 5 10 1 0 0 0 1
+value=options TEMP=25
+T 40500 40800 9 10 1 0 0 0 1
+https://www.reddit.com/r/chipdesign/comments/6j8834/gyrator_implementation_of_chip_inductor/

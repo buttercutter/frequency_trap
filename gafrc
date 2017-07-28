@@ -1,0 +1,4 @@
+(display "reading specific gafrc")
+(component-library "." "My Symbol")
+(source-library ".")
+
