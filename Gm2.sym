@@ -33,4 +33,4 @@ refdes=U?
 T 695 1200 8 10 1 0 0 0 1
 numslots=0
 T -505 1200 8 10 0 0 0 0 1
-source=Gm2.net
+spice-prototype=X? %down GM2

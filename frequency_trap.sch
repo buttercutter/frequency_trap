@@ -41,11 +41,9 @@ refdes=U2
 T 45605 41300 5 10 0 0 0 6 1
 numslots=0
 T 45605 41100 5 10 0 0 0 6 1
-source=Gm2.net
+source=Gm2.sch
 T 46900 42400 5 10 0 0 0 0 1
 model-name=GM2
-T 46900 42400 5 10 0 0 0 0 1
-symversion=1.0
 T 46900 42400 5 10 0 0 0 0 1
 footprint=none
 }
@@ -78,7 +76,7 @@ symversion=1.0
 T 46000 44200 5 10 0 0 0 0 1
 footprint=none
 T 45200 44200 5 10 0 0 0 0 1
-source=CMOS_Inverter.net
+source=CMOS_Inverter.sch
 }
 N 46900 42700 47400 42700 4
 C 50800 47500 1 0 0 vdc-1.sym

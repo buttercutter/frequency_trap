@@ -9,7 +9,7 @@ ADDITIONAL_FILES=Gm2.net CMOS_Inverter.net
 .PHONY : simulation
 
 simulation : $(SCH_NAME).net $(ADDITIONAL_FILES)
-	$(SPICE) $(SCH_NAME).net
+	$(SPICE) $(SCH_NAME).net submicron.inc
 
 clean : 
 	rm -f $(SCH_NAME).net $(ADDITIONAL_FILES) \#* *~
