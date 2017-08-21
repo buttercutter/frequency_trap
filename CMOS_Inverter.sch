@@ -7,7 +7,7 @@ device=PMOS_TRANSISTOR
 T 50900 47700 5 10 1 1 0 0 1
 refdes=M4
 T 50900 47500 5 8 1 1 0 0 1
-model-name=pch
+model-name=P1
 T 50900 47200 5 8 1 0 0 0 1
 w=3
 T 50900 47000 5 8 1 0 0 0 1
@@ -28,7 +28,7 @@ device=NMOS_TRANSISTOR
 T 50900 46000 5 10 1 1 0 0 1
 refdes=M1
 T 50900 45800 5 8 1 1 0 0 1
-model-name=nch
+model-name=N1
 T 50900 45500 5 8 1 0 0 0 1
 w=3
 T 50900 45300 5 8 1 0 0 0 1

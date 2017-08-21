@@ -9,20 +9,25 @@ refdes=Cs
 T 43500 45200 5 10 1 1 0 0 1
 value=1n
 }
-C 42700 44100 1 90 0 voltage-1.sym
+C 42700 44600 1 90 0 voltage-1.sym
 {
-T 42200 44200 5 10 0 0 90 0 1
+T 42200 44700 5 10 0 0 90 0 1
 device=VOLTAGE_SOURCE
-T 41900 44700 5 10 1 1 0 0 1
+T 41900 45200 5 10 1 1 0 0 1
 refdes=Vtest
-T 41000 44300 5 10 1 1 0 0 1
-value=sin(0.1 1 1GHz)
+T 40900 44800 5 10 1 1 0 0 3
+value=dc 0
++ac 1
++sin 0 1 10G
 }
-N 42500 45000 42500 46300 4
 N 42500 46300 44000 46300 4
+{
+T 42500 46300 5 10 0 0 0 0 1
+netname=Vtest
+}
 N 44000 45900 44000 46300 4
-C 42300 43600 1 0 0 ground.sym
-N 42500 44100 42500 43900 4
+C 42300 43800 1 0 0 ground.sym
+N 42500 44600 42500 44100 4
 C 48200 43100 1 270 1 asic-cap-2.sym
 {
 T 48600 44100 5 8 0 0 90 2 1
@@ -50,19 +55,15 @@ footprint=none
 C 48200 42500 1 0 0 ground.sym
 N 48400 44000 48400 44500 4
 N 46300 44500 48400 44500 4
-{
-T 46300 44500 5 10 0 0 0 0 1
-netname=Vc
-}
 N 48400 43100 48400 42800 4
 N 47400 44500 47400 42700 4
 N 44000 42700 44000 45000 4
 N 44000 44500 45200 44500 4
-{
-T 44000 44500 5 10 0 0 0 0 1
-netname=Vx
-}
 N 44000 42700 44600 42700 4
+{
+T 44000 42700 5 10 0 0 0 0 1
+netname=OUT
+}
 C 45200 44200 1 0 0 INV1-1.sym
 {
 T 45600 44800 5 10 1 1 0 0 1
@@ -79,48 +80,43 @@ T 45200 44200 5 10 0 0 0 0 1
 source=CMOS_Inverter.sch
 }
 N 46900 42700 47400 42700 4
-C 50800 47500 1 0 0 vdc-1.sym
 {
-T 51500 48350 5 10 0 0 0 0 1
+T 46900 42700 5 10 0 0 0 0 1
+netname=IN
+}
+C 48900 47800 1 0 0 vdc-1.sym
+{
+T 49600 48650 5 10 0 0 0 0 1
 device=VOLTAGE_SOURCE
-T 51500 48550 5 10 0 0 0 0 1
+T 49600 48850 5 10 0 0 0 0 1
 footprint=none
-T 51500 48150 5 10 1 1 0 0 1
+T 49600 48450 5 10 1 1 0 0 1
 refdes=Vd
-T 51500 47950 5 10 1 1 0 0 1
+T 49600 48250 5 10 1 1 0 0 1
 value='SUPPLY'
 }
-C 51000 47200 1 0 0 gnd-1.sym
-C 53000 47500 1 0 0 vdc-1.sym
+C 49100 47500 1 0 0 gnd-1.sym
+C 51100 47800 1 0 0 vdc-1.sym
 {
-T 53700 48350 5 10 0 0 0 0 1
+T 51800 48650 5 10 0 0 0 0 1
 device=VOLTAGE_SOURCE
-T 53700 48550 5 10 0 0 0 0 1
+T 51800 48850 5 10 0 0 0 0 1
 footprint=none
-T 53700 48650 5 10 1 1 0 0 1
+T 51800 48950 5 10 1 1 0 0 1
 refdes=Vs
-T 53700 48450 5 10 1 1 0 0 1
+T 51800 48750 5 10 1 1 0 0 1
 value=0V
 }
-C 53200 47200 1 0 0 gnd-1.sym
-N 53300 49500 53300 48700 4
+C 51300 47500 1 0 0 gnd-1.sym
+N 51400 49800 51400 49000 4
 {
-T 53300 49500 5 10 1 1 0 0 1
+T 51400 49800 5 10 1 1 0 0 1
 netname=Vss
 }
-N 51100 49500 51100 48700 4
+N 49200 49800 49200 49000 4
 {
-T 51100 49500 5 10 1 1 0 0 1
+T 49200 49800 5 10 1 1 0 0 1
 netname=Vdd
-}
-C 45300 47600 1 0 0 spice-directive-1.sym
-{
-T 45400 47900 5 10 0 1 0 0 1
-device=directive
-T 45400 48000 5 10 1 1 0 0 1
-refdes=A3
-T 45400 47700 5 10 1 1 0 0 1
-value=.AC lin 10000000 0.1 1GHz
 }
 C 45300 48600 1 0 0 spice-directive-1.sym
 {
@@ -156,13 +152,23 @@ T 42100 48900 5 10 0 1 0 0 1
 device=directive
 T 42100 49000 5 10 1 1 0 0 1
 refdes=A4
-T 42000 48000 5 10 1 1 0 0 4
+T 42000 48000 5 10 1 1 0 0 3
 value=.options TEMP=25
-.options SCALE=1u
-.MODEL nch NMOS
-.MODEL pch PMOS
+.MODEL n1 NMOS
+.MODEL p1 PMOS
 }
-T 45400 47300 5 10 1 0 0 0 1
-value=options TEMP=25
 T 40500 40800 9 10 1 0 0 0 1
 https://www.reddit.com/r/chipdesign/comments/6j8834/gyrator_implementation_of_chip_inductor/
+N 42500 45500 42500 46300 4
+T 45100 45300 9 10 1 0 0 0 11
+spice-epilog=.control
+ac lin 100 1 10G
+plot db(Vtest)
+tran 0.1p 400p
+plot Vtest IN OUT
+noise v(Vtest) Vtest lin 100 1 10G
+setplot noise1
+let noise_figure=db(inoise_spectrum)/2-db(2*sqrt(boltz*290*50))
+plot noise_figure
+.endc
+
