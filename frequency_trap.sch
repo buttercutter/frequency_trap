@@ -9,17 +9,6 @@ refdes=Cs
 T 43500 45200 5 10 1 1 0 0 1
 value=1n
 }
-C 42700 44600 1 90 0 voltage-1.sym
-{
-T 42200 44700 5 10 0 0 90 0 1
-device=VOLTAGE_SOURCE
-T 41900 45200 5 10 1 1 0 0 1
-refdes=Vtest
-T 40900 44800 5 10 1 1 0 0 3
-value=dc 0
-+ac 1
-+sin 0 1 10G
-}
 N 42500 46300 44000 46300 4
 {
 T 42500 46300 5 10 0 0 0 0 1
@@ -34,8 +23,8 @@ T 48600 44100 5 8 0 0 90 2 1
 device=CAPACITOR
 T 48900 43800 5 10 1 1 0 6 1
 refdes=CL
-T 48900 43300 5 10 1 1 0 6 1
-value=1n
+T 49200 43200 5 10 1 1 0 6 1
+value=0.07pF
 }
 C 46900 42400 1 0 1 Gm2.sym
 {
@@ -54,15 +43,17 @@ footprint=none
 }
 C 48200 42500 1 0 0 ground.sym
 N 48400 44000 48400 44500 4
-N 46300 44500 48400 44500 4
 N 48400 43100 48400 42800 4
 N 47400 44500 47400 42700 4
-N 44000 42700 44000 45000 4
 N 44000 44500 45200 44500 4
+{
+T 44000 44500 5 10 0 0 0 0 1
+netname=X1.IN
+}
 N 44000 42700 44600 42700 4
 {
 T 44000 42700 5 10 0 0 0 0 1
-netname=OUT
+netname=Gm2.OUT
 }
 C 45200 44200 1 0 0 INV1-1.sym
 {
@@ -82,7 +73,7 @@ source=CMOS_Inverter.sch
 N 46900 42700 47400 42700 4
 {
 T 46900 42700 5 10 0 0 0 0 1
-netname=IN
+netname=Gm2.IN
 }
 C 48900 47800 1 0 0 vdc-1.sym
 {
@@ -144,7 +135,7 @@ device=directive
 T 42100 50100 5 10 1 1 0 0 1
 refdes=A5
 T 42100 49800 5 10 1 1 0 0 1
-value=.PARAM SUPPLY=3v
+value=.PARAM SUPPLY=3.3v
 }
 C 42000 48600 1 0 0 spice-directive-1.sym
 {
@@ -163,12 +154,49 @@ N 42500 45500 42500 46300 4
 T 45100 45300 9 10 1 0 0 0 11
 spice-epilog=.control
 ac lin 100 1 10G
-plot db(Vtest)
+plot Vtest
 tran 0.1p 400p
-plot Vtest IN OUT
+plot Vtest X1.IN X1.OUT
 noise v(Vtest) Vtest lin 100 1 10G
 setplot noise1
 let noise_figure=db(inoise_spectrum)/2-db(2*sqrt(boltz*290*50))
 plot noise_figure
 .endc
 
+C 46600 44300 1 0 0 current_probe.sym
+{
+T 46600 44800 5 10 0 0 0 0 1
+device=CURRENT_PROBE
+T 46700 44770 5 6 1 1 0 0 1
+refdes=V_IP_X1
+T 46600 45000 5 10 0 0 0 0 1
+value=DC 0V
+}
+C 44200 43300 1 90 0 current_probe.sym
+{
+T 43700 43300 5 10 0 0 90 0 1
+device=CURRENT_PROBE
+T 43800 43530 5 6 1 1 180 0 1
+refdes=V_IP_Gm2
+T 43500 43300 5 10 0 0 90 0 1
+value=DC 0V
+}
+N 44000 45000 44000 43900 4
+N 44000 43300 44000 42700 4
+N 46600 44500 46300 44500 4
+{
+T 46600 44500 5 10 0 0 0 0 1
+netname=X1.OUT
+}
+N 47200 44500 48400 44500 4
+C 42300 45500 1 270 0 voltage-1.sym
+{
+T 42800 45400 5 10 0 0 270 0 1
+device=VOLTAGE_SOURCE
+T 42200 45400 5 10 1 1 180 0 1
+refdes=Vtest
+T 43600 44900 5 10 1 1 180 0 3
+value=dc 0
++ac 1m
++pulse 0 0.1 10n 200p 200p 10n
+}
