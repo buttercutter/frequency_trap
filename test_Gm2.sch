@@ -12,6 +12,8 @@ T 50100 45400 5 10 0 0 0 0 1
 model-name=GM2
 T 50100 45400 5 10 0 0 0 0 1
 footprint=none
+T 48700 46100 5 10 1 1 0 0 1
+refdes=U2
 }
 C 48500 47700 1 0 0 vdc-1.sym
 {
