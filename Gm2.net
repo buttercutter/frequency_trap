@@ -4,8 +4,8 @@
 .subckt GM2 7 3
 M4 g3 g3 1 1 P1  l=1u w=3u         
 M3 3 g3 2 2 P1  l=1u w=3u         
-M5 3 5 4 4 N1  l=3u w=3u         m=3000000000
-M6 g3 7 6 6 N1  l=3u w=3u         m=3000000000
+M5 3 5 4 4 N1  l=3u w=3u         m=300000000
+M6 g3 7 6 6 N1  l=3u w=3u         m=300000000
 I2 8 Vss 4uA
 I1 9 Vss 4uA
 Vb 5 Vss 1.8V
