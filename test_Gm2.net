@@ -16,5 +16,6 @@ V_IP_out 1 2 DC 0V
 .control
 ac lin 100 1 10G
 plot Vin
+plot i(v_ip_out)
 .endc
 

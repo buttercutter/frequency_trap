@@ -72,10 +72,11 @@ value=.options TEMP=25
 .MODEL n1 NMOS
 .MODEL p1 PMOS
 }
-T 42600 45600 9 10 1 0 0 0 5
+T 42600 45600 9 10 1 0 0 0 6
 spice-epilog=.control
 ac lin 100 1 10G
 plot Vin
+plot i(v_ip_out)
 .endc
 
 C 46000 43600 1 0 0 gnd-1.sym
