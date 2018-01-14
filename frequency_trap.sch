@@ -151,9 +151,10 @@ value=.options TEMP=25
 T 40500 40800 9 10 1 0 0 0 1
 https://www.reddit.com/r/chipdesign/comments/6j8834/gyrator_implementation_of_chip_inductor/
 N 42500 45500 42500 46300 4
-T 45100 45300 9 10 1 0 0 0 11
+T 45100 45300 9 10 1 0 0 0 12
 spice-epilog=.control
-ac lin 100 1 10G
+op
+ac lin 1000000 30Meg 35Meg
 plot Vtest
 tran 0.1p 400p
 plot Vtest X1.IN X1.OUT
@@ -196,7 +197,7 @@ device=VOLTAGE_SOURCE
 T 42200 45400 5 10 1 1 180 0 1
 refdes=Vtest
 T 43600 44900 5 10 1 1 180 0 3
-value=dc 0
-+ac 1m
+value=dc 1
++ac 1
 +pulse 0 0.1 10n 200p 200p 10n
 }
