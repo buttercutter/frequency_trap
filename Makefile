@@ -1,7 +1,7 @@
 GNET=gnetlist -L ../.. -g spice-noqsi
 SPICE=ngspice
 SCH_NAME=frequency_trap
-ADDITIONAL_FILES=Gm2.net CMOS_Inverter.net
+ADDITIONAL_FILES=active_inductor.net Gm2.net CMOS_Inverter.net
 GM2_FILES=test_Gm2.net Gm2.net
 X1_FILES=test_CMOS_Inverter.net CMOS_Inverter.net
 
