@@ -11,7 +11,7 @@ Vs Vss GND 0V
 .MODEL n1 NMOS
 .MODEL p1 PMOS
 Cout GND 2 1n      
-Vin Vin GND AC 1m
+Vin Vin GND DC 1.8V AC 1V
 V_IP_out 1 2 DC 0V  
 .control
 ac lin 100 1 10G
