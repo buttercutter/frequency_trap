@@ -117,28 +117,6 @@ T 41300 43600 5 10 1 1 180 0 2
 value=dc 0
 +ac 1
 }
-N 51900 45000 52400 45000 4
-N 55200 45000 56100 45000 4
-N 56100 44500 56100 45000 4
-{
-T 56000 44500 5 10 1 1 180 0 1
-netname=Vss
-}
-C 52400 44700 1 0 0 active_inductor.sym
-{
-T 52400 44700 5 10 0 0 0 0 1
-source=active_inductor.sch
-T 52400 44700 5 10 0 0 0 0 1
-model-name=active_inductor
-T 53095 46100 5 10 1 0 0 0 1
-device=AC_INDUCTOR
-T 53095 45900 5 10 1 0 0 0 1
-description=Active_Inductor_using_gyrator
-T 53095 45700 5 10 1 0 0 0 1
-refdes=U1
-T 53095 45500 5 10 1 0 0 0 1
-numslots=0
-}
 C 49900 42200 1 270 1 asic-cap-2.sym
 {
 T 50300 43200 5 8 0 0 90 2 1
@@ -239,9 +217,4 @@ T 42700 45400 5 10 1 1 0 0 1
 refdes=Rs
 T 42500 44900 5 10 1 1 0 0 1
 value=1e99 ac=1e-6
-}
-N 51900 44500 51900 45000 4
-{
-T 51800 44500 5 10 1 1 180 0 1
-netname=Vss
 }

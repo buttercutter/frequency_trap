@@ -14,7 +14,6 @@ Vs Vss GND 0V
 .MODEL p1 PMOS
 Vtest Vtest GND dc 0
 +ac 1
-XU1 Vss Vss active_inductor
 CL GND Gm2.IN 0.07pF      
 XGm2 Gm2.IN Gm2.OUT GM2
 X1 X1.IN X1.OUT INV1
