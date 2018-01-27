@@ -92,11 +92,14 @@ N 41500 44200 41500 45200 4
 T 41500 44200 5 10 0 0 0 0 1
 netname=Vtest
 }
-T 45100 45300 9 10 1 0 0 0 14
+T 45100 44900 9 10 1 0 0 0 17
 spice-epilog=.control
 op
-ac lin 10000 200 300
-plot Vtest Vout
+ac lin 10000 100 10000
+write frequency_trap.raw
+gnuplot vtest db(vtest) xlog
+gnuplot vout db(vout) xlog
+*plot Vtest Vout
 tran 0.1p 400p
 plot Vtest X1.IN X1.OUT
 setplot

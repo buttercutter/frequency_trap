@@ -102,7 +102,7 @@ device=CURRENT_SOURCE
 T 49800 43800 5 10 1 1 0 0 1
 refdes=I2
 T 49800 43600 5 10 1 1 0 0 1
-value=4uA
+value=40uA
 }
 C 46400 44300 1 270 0 current-1.sym
 {
@@ -111,7 +111,7 @@ device=CURRENT_SOURCE
 T 46900 43800 5 10 1 1 0 0 1
 refdes=I1
 T 46900 43600 5 10 1 1 0 0 1
-value=4uA
+value=40uA
 }
 C 44900 45800 1 270 0 voltage-3.sym
 {
@@ -131,7 +131,7 @@ device=RESISTOR
 T 47600 44100 5 10 1 1 0 0 1
 refdes=Rs
 T 48100 44100 5 10 1 1 0 0 1
-value=10k
+value=500k
 }
 C 45600 46600 1 0 1 out-1.sym
 {
