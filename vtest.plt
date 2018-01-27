@@ -3,10 +3,8 @@ set title "* gnetlist -l ../.. -g spice-noqsi -o frequency_trap.net frequency_tr
 set xlabel "Hz"
 set ylabel "V"
 set grid
-set logscale x
-set xrange [1e+02:1e+05]
-set mxtics 10
-set grid mxtics
+unset logscale x 
+set xrange [1.380000e+02:2.000000e+02]
 unset logscale y 
 set yrange [-1.100000e+00:1.100000e+00]
 #set xtics 1

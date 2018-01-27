@@ -95,10 +95,10 @@ netname=Vtest
 T 45100 44900 9 10 1 0 0 0 17
 spice-epilog=.control
 op
-ac lin 10000 100 10000
+ac lin 10000 138 200
 write frequency_trap.raw
-gnuplot vtest db(vtest) xlog
-gnuplot vout db(vout) xlog
+gnuplot vtest db(vtest)
+gnuplot vout db(vout)
 *plot Vtest Vout
 tran 0.1p 400p
 plot Vtest X1.IN X1.OUT
