@@ -1,12 +1,12 @@
 v 20130925 2
 C 40000 40000 0 0 0 title-B.sym
-C 44700 43900 1 90 0 asic-cap-2.sym
+C 44300 43900 1 270 1 asic-cap-2.sym
 {
-T 44300 44900 5 8 0 0 90 0 1
+T 44700 44900 5 8 0 0 90 2 1
 device=CAPACITOR
-T 45100 44700 5 10 1 1 180 0 1
+T 43900 44700 5 10 1 1 180 6 1
 refdes=Ctest
-T 44900 44100 5 10 1 1 180 0 1
+T 44100 44100 5 10 1 1 180 6 1
 value=1n
 }
 C 41300 42500 1 0 0 ground.sym
@@ -95,7 +95,7 @@ netname=Vtest
 T 45100 44900 9 10 1 0 0 0 17
 spice-epilog=.control
 op
-ac lin 10000 138 200
+ac lin 10000 100 2000
 write frequency_trap.raw
 gnuplot vtest db(vtest)
 gnuplot vout db(vout)
@@ -219,5 +219,5 @@ device=RESISTOR
 T 42700 45400 5 10 1 1 0 0 1
 refdes=Rs
 T 42500 44900 5 10 1 1 0 0 1
-value=1e99 ac=1e-6
+value=1e-6
 }

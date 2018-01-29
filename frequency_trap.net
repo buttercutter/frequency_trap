@@ -19,10 +19,10 @@ XGm2 Gm2.IN Gm2.OUT GM2
 X1 X1.IN X1.OUT INV1
 V_IP_X1 X1.OUT Gm2.IN DC 0V  
 V_IP_Gm2 Gm2.OUT X1.IN DC 0V  
-Rs Vtest Vout 1e99 ac=1e-6      
+Rs Vtest Vout 1e-6      
 .control
 op
-ac lin 10000 138 200
+ac lin 10000 100 2000
 write frequency_trap.raw
 gnuplot vtest db(vtest)
 gnuplot vout db(vout)
