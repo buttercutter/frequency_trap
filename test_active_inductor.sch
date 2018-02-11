@@ -1,0 +1,226 @@
+v 20130925 2
+C 40000 40000 0 0 0 title-B.sym
+C 51000 42500 1 270 1 asic-cap-2.sym
+{
+T 51400 43500 5 8 0 0 90 2 1
+device=CAPACITOR
+T 51700 43200 5 10 1 1 0 6 1
+refdes=CL
+T 52000 42600 5 10 1 1 0 6 1
+value=0.07pF
+}
+C 49700 41800 1 0 1 Gm2.sym
+{
+T 48405 41300 5 10 0 0 0 6 1
+device=GM2
+T 48405 40700 5 10 0 0 0 6 1
+numslots=0
+T 48405 40500 5 10 0 0 0 6 1
+source=Gm2.sch
+T 49700 41800 5 10 0 0 0 0 1
+model-name=GM2
+T 49700 41800 5 10 0 0 0 0 1
+footprint=none
+T 48705 42500 5 10 1 1 0 6 1
+refdes=Gm2
+}
+N 51200 43400 51200 43900 4
+N 51200 42500 51200 42200 4
+N 50200 43900 50200 42100 4
+N 46800 42100 47400 42100 4
+{
+T 46800 42100 5 10 0 0 0 0 1
+netname=Gm2.OUT
+}
+C 48000 43600 1 0 0 INV1-1.sym
+{
+T 48800 45300 5 10 0 1 0 0 1
+device=INV1
+T 48800 45100 5 10 0 0 0 0 1
+model-name=INV1
+T 48800 44300 5 10 0 0 0 0 1
+symversion=1.0
+T 48800 43600 5 10 0 0 0 0 1
+footprint=none
+T 48000 43600 5 10 0 0 0 0 1
+source=CMOS_Inverter.sch
+T 48400 44200 5 10 1 1 0 0 1
+refdes=X1
+}
+N 49700 42100 50200 42100 4
+{
+T 49700 42100 5 10 0 0 0 0 1
+netname=Gm2.IN
+}
+C 49400 43700 1 0 0 current_probe.sym
+{
+T 49400 44200 5 10 0 0 0 0 1
+device=CURRENT_PROBE
+T 49400 44400 5 10 0 0 0 0 1
+value=DC 0V
+T 49500 44170 5 6 1 1 0 0 1
+refdes=V_IP_X1
+}
+C 47000 42700 1 90 0 current_probe.sym
+{
+T 46500 42700 5 10 0 0 90 0 1
+device=CURRENT_PROBE
+T 46300 42700 5 10 0 0 90 0 1
+value=DC 0V
+T 46600 42930 5 6 1 1 180 0 1
+refdes=V_IP_Gm2
+}
+N 46800 42700 46800 42100 4
+N 49400 43900 49100 43900 4
+{
+T 49400 43900 5 10 0 0 0 0 1
+netname=X1.OUT
+}
+N 50000 43900 52700 43900 4
+N 46800 43300 46800 43900 4
+C 51000 41900 1 0 0 ground.sym
+N 45800 43900 48000 43900 4
+{
+T 46800 43900 5 10 0 0 0 0 1
+netname=X1.IN
+}
+C 52600 43400 1 270 0 resistor-1.sym
+{
+T 53000 43100 5 10 0 0 270 0 1
+device=RESISTOR
+T 53000 43000 5 10 1 1 0 0 1
+refdes=Z2
+T 53000 42700 5 10 1 1 0 0 1
+value=50
+}
+N 52700 42500 52700 42200 4
+C 52500 41900 1 0 0 ground.sym
+N 52700 43400 52700 43900 4
+{
+T 52700 43400 5 10 0 0 0 0 1
+netname=Z2
+}
+C 44900 43800 1 0 0 resistor-1.sym
+{
+T 45200 44200 5 10 0 0 0 0 1
+device=RESISTOR
+T 45200 44300 5 10 1 1 180 0 1
+refdes=Z1
+T 45800 44300 5 10 1 1 180 0 1
+value=50
+}
+N 44100 42500 44100 42200 4
+C 43900 41900 1 0 0 ground.sym
+C 43900 43400 1 270 0 voltage-1.sym
+{
+T 44400 43300 5 10 0 0 270 0 1
+device=VOLTAGE_SOURCE
+T 43800 43300 5 10 1 1 180 0 1
+refdes=Vtest
+T 43900 42800 5 10 1 1 180 0 2
+value=dc 1
++ac 1
+}
+N 44900 43900 44100 43900 4
+N 44100 43900 44100 43400 4
+{
+T 44100 43900 5 10 0 1 0 0 1
+netname=Vtest
+}
+C 41800 46900 1 0 0 spice-directive-1.sym
+{
+T 41900 47200 5 10 0 1 0 0 1
+device=directive
+T 41900 47300 5 10 1 1 0 0 1
+refdes=A2
+T 41800 46900 5 10 1 1 0 0 1
+value=.GLOBAL Vdd Vss
+}
+C 45200 48100 1 0 0 spice-directive-1.sym
+{
+T 45300 48400 5 10 0 1 0 0 1
+device=directive
+T 45300 48500 5 10 1 1 0 0 1
+refdes=A5
+T 45300 48200 5 10 1 1 0 0 1
+value=.PARAM SUPPLY=3.3v
+}
+C 45200 47000 1 0 0 spice-directive-1.sym
+{
+T 45300 47300 5 10 0 1 0 0 1
+device=directive
+T 45300 47400 5 10 1 1 0 0 1
+refdes=A4
+T 45200 46600 5 10 1 1 0 0 3
+value=.options TEMP=25
+.MODEL n1 NMOS
+.MODEL p1 PMOS
+}
+C 41800 48100 1 0 0 spice-directive-1.sym
+{
+T 41700 47900 5 10 1 1 0 0 2
+value=.INCLUDE CMOS_Inverter.net
+.INCLUDE Gm2.net
+T 41900 48400 5 10 0 1 0 0 1
+device=directive
+T 41900 48500 5 10 1 1 0 0 1
+refdes=A1
+}
+C 51800 46700 1 0 0 vdc-1.sym
+{
+T 52500 47550 5 10 0 0 0 0 1
+device=VOLTAGE_SOURCE
+T 52500 47750 5 10 0 0 0 0 1
+footprint=none
+T 52500 47350 5 10 1 1 0 0 1
+refdes=Vd
+T 52500 47150 5 10 1 1 0 0 1
+value='SUPPLY'
+}
+C 52000 46400 1 0 0 gnd-1.sym
+C 54000 46700 1 0 0 vdc-1.sym
+{
+T 54700 47550 5 10 0 0 0 0 1
+device=VOLTAGE_SOURCE
+T 54700 47750 5 10 0 0 0 0 1
+footprint=none
+T 54700 47850 5 10 1 1 0 0 1
+refdes=Vs
+T 54700 47650 5 10 1 1 0 0 1
+value=0V
+}
+C 54200 46400 1 0 0 gnd-1.sym
+N 54300 48700 54300 47900 4
+{
+T 54300 48700 5 10 1 1 0 0 1
+netname=Vss
+}
+N 52100 48700 52100 47900 4
+{
+T 52100 48700 5 10 1 1 0 0 1
+netname=Vdd
+}
+T 46100 49600 9 16 1 0 0 0 1
+S11 and S21 measurement of active inductor
+T 47800 44800 9 10 1 0 0 0 21
+spice-epilog=.control
+set noaskquit
+AC LIN 1000 100 200
+run
+let S11=(2*v(X1.IN)/v(Vtest)-1)
+let S21=(2*v(Z2)/V(Vtest))
+settype s-param S11 S21
+
+let S11db=db(S11)
+let S21db=db(S21)
+settype decibel S11db S21db
+
+let P11=180*ph(s11)/pi
+let P21=180*ph(s21)/pi
+settype phase P11 P21
+
+plot s11db s21db ylimit -0.5 0
+plot P11 P21
+plot smithgrid S11 S21
+wrs2p s3046.s2p $ write touchstone vers. 1 file s3046.s2p
+.endc
