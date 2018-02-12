@@ -76,29 +76,13 @@ N 49400 43900 49100 43900 4
 T 49400 43900 5 10 0 0 0 0 1
 netname=X1.OUT
 }
-N 50000 43900 52700 43900 4
+N 50000 43900 51200 43900 4
 N 46800 43300 46800 43900 4
 C 51000 41900 1 0 0 ground.sym
 N 45800 43900 48000 43900 4
 {
 T 46800 43900 5 10 0 0 0 0 1
 netname=X1.IN
-}
-C 52600 43400 1 270 0 resistor-1.sym
-{
-T 53000 43100 5 10 0 0 270 0 1
-device=RESISTOR
-T 53000 43000 5 10 1 1 0 0 1
-refdes=Z2
-T 53000 42700 5 10 1 1 0 0 1
-value=50
-}
-N 52700 42500 52700 42200 4
-C 52500 41900 1 0 0 ground.sym
-N 52700 43400 52700 43900 4
-{
-T 52700 43400 5 10 0 0 0 0 1
-netname=Z2
 }
 C 44900 43800 1 0 0 resistor-1.sym
 {
@@ -201,26 +185,25 @@ T 52100 48700 5 10 1 1 0 0 1
 netname=Vdd
 }
 T 46100 49600 9 16 1 0 0 0 1
-S11 and S21 measurement of active inductor
-T 47800 44800 9 10 1 0 0 0 21
+S11 measurement of active inductor
+T 47800 45200 9 10 1 0 0 0 20
 spice-epilog=.control
 set noaskquit
 AC LIN 1000 100 200
 run
 let S11=(2*v(X1.IN)/v(Vtest)-1)
-let S21=(2*v(Z2)/V(Vtest))
-settype s-param S11 S21
+settype s-param S11
 
 let S11db=db(S11)
-let S21db=db(S21)
-settype decibel S11db S21db
+settype decibel S11db
 
 let P11=180*ph(s11)/pi
-let P21=180*ph(s21)/pi
-settype phase P11 P21
+settype phase P11
 
-plot s11db s21db ylimit -0.5 0
-plot P11 P21
-plot smithgrid S11 S21
-wrs2p s3046.s2p $ write touchstone vers. 1 file s3046.s2p
+plot s11db ylimit -0.5 0
+plot P11
+
+print S11 > S11.log
+*plot smithgrid S11
+*wrs2p s3046.s2p $ write touchstone vers. 1 file s3046.s2p
 .endc
