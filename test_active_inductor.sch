@@ -1,89 +1,5 @@
 v 20130925 2
 C 40000 40000 0 0 0 title-B.sym
-C 51000 42500 1 270 1 asic-cap-2.sym
-{
-T 51400 43500 5 8 0 0 90 2 1
-device=CAPACITOR
-T 51700 43200 5 10 1 1 0 6 1
-refdes=CL
-T 52000 42600 5 10 1 1 0 6 1
-value=0.07pF
-}
-C 49700 41800 1 0 1 Gm2.sym
-{
-T 48405 41300 5 10 0 0 0 6 1
-device=GM2
-T 48405 40700 5 10 0 0 0 6 1
-numslots=0
-T 48405 40500 5 10 0 0 0 6 1
-source=Gm2.sch
-T 49700 41800 5 10 0 0 0 0 1
-model-name=GM2
-T 49700 41800 5 10 0 0 0 0 1
-footprint=none
-T 48705 42500 5 10 1 1 0 6 1
-refdes=Gm2
-}
-N 51200 43400 51200 43900 4
-N 51200 42500 51200 42200 4
-N 50200 43900 50200 42100 4
-N 46800 42100 47400 42100 4
-{
-T 46800 42100 5 10 0 0 0 0 1
-netname=Gm2.OUT
-}
-C 48000 43600 1 0 0 INV1-1.sym
-{
-T 48800 45300 5 10 0 1 0 0 1
-device=INV1
-T 48800 45100 5 10 0 0 0 0 1
-model-name=INV1
-T 48800 44300 5 10 0 0 0 0 1
-symversion=1.0
-T 48800 43600 5 10 0 0 0 0 1
-footprint=none
-T 48000 43600 5 10 0 0 0 0 1
-source=CMOS_Inverter.sch
-T 48400 44200 5 10 1 1 0 0 1
-refdes=X1
-}
-N 49700 42100 50200 42100 4
-{
-T 49700 42100 5 10 0 0 0 0 1
-netname=Gm2.IN
-}
-C 49400 43700 1 0 0 current_probe.sym
-{
-T 49400 44200 5 10 0 0 0 0 1
-device=CURRENT_PROBE
-T 49400 44400 5 10 0 0 0 0 1
-value=DC 0V
-T 49500 44170 5 6 1 1 0 0 1
-refdes=V_IP_X1
-}
-C 47000 42700 1 90 0 current_probe.sym
-{
-T 46500 42700 5 10 0 0 90 0 1
-device=CURRENT_PROBE
-T 46300 42700 5 10 0 0 90 0 1
-value=DC 0V
-T 46600 42930 5 6 1 1 180 0 1
-refdes=V_IP_Gm2
-}
-N 46800 42700 46800 42100 4
-N 49400 43900 49100 43900 4
-{
-T 49400 43900 5 10 0 0 0 0 1
-netname=X1.OUT
-}
-N 50000 43900 51200 43900 4
-N 46800 43300 46800 43900 4
-C 51000 41900 1 0 0 ground.sym
-N 45800 43900 48000 43900 4
-{
-T 46800 43900 5 10 0 0 0 0 1
-netname=X1.IN
-}
 C 44900 43800 1 0 0 resistor-1.sym
 {
 T 45200 44200 5 10 0 0 0 0 1
@@ -189,9 +105,9 @@ S11 measurement of active inductor
 T 47800 45200 9 10 1 0 0 0 20
 spice-epilog=.control
 set noaskquit
-AC LIN 1000 100 200
+AC LIN 1000 100Meg 200Meg
 run
-let S11=(2*v(X1.IN)/v(Vtest)-1)
+let S11=(2*v(Ltest)/v(Vtest)-1)
 settype s-param S11
 
 let S11db=db(S11)
@@ -207,3 +123,22 @@ print S11 > S11.log
 *plot smithgrid S11
 *wrs2p s3046.s2p $ write touchstone vers. 1 file s3046.s2p
 .endc
+C 46700 43800 1 0 0 inductor-1.sym
+{
+T 46900 44300 5 10 0 0 0 0 1
+device=INDUCTOR
+T 46700 44100 5 10 1 1 0 0 1
+refdes=Ltest
+T 46900 44500 5 10 0 0 0 0 1
+symversion=0.1
+T 47400 44100 5 10 1 1 0 0 1
+value=1n
+}
+N 46700 43900 45800 43900 4
+{
+T 46700 43900 5 10 0 0 0 0 1
+netname=Ltest
+}
+N 48400 42800 48400 43900 4
+C 48200 42500 1 0 0 ground.sym
+N 47600 43900 48400 43900 4
