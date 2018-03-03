@@ -30,4 +30,4 @@ refdes=U?
 T 695 800 8 10 1 0 0 0 1
 numslots=0
 T -505 1200 8 10 0 0 0 0 1
-spice-prototype=X? %down active_inductor
+spice-prototype=X? %down AC_INDUCTOR

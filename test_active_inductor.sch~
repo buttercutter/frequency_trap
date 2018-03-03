@@ -1,30 +1,30 @@
 v 20130925 2
 C 40000 40000 0 0 0 title-B.sym
-C 44600 44000 1 0 0 resistor-1.sym
+C 44900 43800 1 0 0 resistor-1.sym
 {
-T 44900 44400 5 10 0 0 0 0 1
+T 45200 44200 5 10 0 0 0 0 1
 device=RESISTOR
-T 44900 44500 5 10 1 1 180 0 1
-refdes=R1
-T 45500 44500 5 10 1 1 180 0 1
+T 45200 44300 5 10 1 1 180 0 1
+refdes=Z1
+T 45800 44300 5 10 1 1 180 0 1
 value=50
 }
-N 43800 42700 43800 42400 4
-C 43600 42100 1 0 0 ground.sym
-C 43600 43600 1 270 0 voltage-1.sym
+N 44100 42500 44100 42200 4
+C 43900 41900 1 0 0 ground.sym
+C 43900 43400 1 270 0 voltage-1.sym
 {
-T 44100 43500 5 10 0 0 270 0 1
+T 44400 43300 5 10 0 0 270 0 1
 device=VOLTAGE_SOURCE
-T 43500 43500 5 10 1 1 180 0 1
+T 43800 43300 5 10 1 1 180 0 1
 refdes=Vtest
-T 43600 43000 5 10 1 1 180 0 2
+T 43900 42800 5 10 1 1 180 0 2
 value=dc 1
 +ac 1
 }
-N 44600 44100 43800 44100 4
-N 43800 44100 43800 43600 4
+N 44900 43900 44100 43900 4
+N 44100 43900 44100 43400 4
 {
-T 43800 44100 5 10 0 1 0 0 1
+T 44100 43900 5 10 0 1 0 0 1
 netname=Vtest
 }
 C 41800 46900 1 0 0 spice-directive-1.sym
@@ -58,8 +58,9 @@ value=.options TEMP=25
 }
 C 41800 48100 1 0 0 spice-directive-1.sym
 {
-T 41800 48200 5 10 1 1 0 0 1
-value=.INCLUDE active_inductor.net
+T 41700 47900 5 10 1 1 0 0 2
+value=.INCLUDE CMOS_Inverter.net
+.INCLUDE Gm2.net
 T 41900 48400 5 10 0 1 0 0 1
 device=directive
 T 41900 48500 5 10 1 1 0 0 1
@@ -122,26 +123,22 @@ print S11 > S11.log
 *plot smithgrid S11
 *wrs2p s3046.s2p $ write touchstone vers. 1 file s3046.s2p
 .endc
-N 46400 44100 45500 44100 4
+C 46700 43800 1 0 0 inductor-1.sym
 {
-T 46400 44100 5 10 0 0 0 0 1
+T 46900 44300 5 10 0 0 0 0 1
+device=INDUCTOR
+T 46700 44100 5 10 1 1 0 0 1
+refdes=Ltest
+T 46900 44500 5 10 0 0 0 0 1
+symversion=0.1
+T 47400 44100 5 10 1 1 0 0 1
+value=1n
+}
+N 46700 43900 45800 43900 4
+{
+T 46700 43900 5 10 0 0 0 0 1
 netname=Ltest
 }
-N 50000 43000 50000 44100 4
-C 49800 42700 1 0 0 ground.sym
-N 49200 44100 50000 44100 4
-C 46400 43800 1 0 0 active_inductor.sym
-{
-T 46095 43400 5 10 1 0 0 0 1
-device=AC_INDUCTOR
-T 46095 43200 5 10 1 0 0 0 1
-description=Active_Inductor_using_gyrator
-T 46095 43000 5 10 1 0 0 0 1
-refdes=AC_INDUCTOR
-T 46095 42800 5 10 1 0 0 0 1
-numslots=0
-T 46100 42600 5 10 1 0 0 0 1
-source=active_inductor.sch
-T 46400 43800 5 10 0 0 0 0 1
-model-name=ACTIVE_INDUCTOR
-}
+N 48400 42800 48400 43900 4
+C 48200 42500 1 0 0 ground.sym
+N 47600 43900 48400 43900 4
