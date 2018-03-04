@@ -22,7 +22,7 @@ T 1400 300 9 10 1 0 0 4 2
 Active Inductor 
 block
 T 695 1400 8 10 1 0 0 0 1
-device=AC_INDUCTOR
+device=ACTIVE_INDUCTOR
 T 695 1200 8 10 1 0 0 0 1
 description=Active_Inductor_using_gyrator
 T 695 1000 8 10 1 0 0 0 1
@@ -30,4 +30,4 @@ refdes=U?
 T 695 800 8 10 1 0 0 0 1
 numslots=0
 T -505 1200 8 10 0 0 0 0 1
-spice-prototype=X? %down AC_INDUCTOR
+spice-prototype=X? %down ACTIVE_INDUCTOR

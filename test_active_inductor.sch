@@ -133,11 +133,11 @@ N 49200 44100 50000 44100 4
 C 46400 43800 1 0 0 active_inductor.sym
 {
 T 46095 43400 5 10 1 0 0 0 1
-device=AC_INDUCTOR
+device=ACTIVE_INDUCTOR
 T 46095 43200 5 10 1 0 0 0 1
 description=Active_Inductor_using_gyrator
 T 46095 43000 5 10 1 0 0 0 1
-refdes=AC_INDUCTOR
+refdes=ACTIVE_INDUCTOR
 T 46095 42800 5 10 1 0 0 0 1
 numslots=0
 T 46100 42600 5 10 1 0 0 0 1
