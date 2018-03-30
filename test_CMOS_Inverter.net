@@ -3,7 +3,7 @@
 * Send requests or bug reports to jpd@noqsi.com
 X1 Vin 2 INV1
 Vs Vss GND 0V
-Vin Vin GND AC 1
+Vin Vin GND AC 1 DC Vdd/2
 Vd Vdd GND 'SUPPLY'
 V_IP_out 2 1 DC 0V  
 Cout GND 1 1n      

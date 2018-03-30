@@ -1,5 +1,5 @@
  * gnetlist -g spice-noqsi -o test_active_inductor.net test_active_inductor.sch
- AC Analysis  Sun Mar  4 09:52:30  2018
+ AC Analysis  Sun Mar  4 11:48:52  2018
 --------------------------------------------------------------------------------
 Index   frequency       s11                             
 --------------------------------------------------------------------------------

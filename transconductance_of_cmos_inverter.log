@@ -1,5 +1,5 @@
 * gnetlist -l ../.. -g spice-noqsi -o test_cmos_inverter.net test_cmos_inverter.sch
-AC Analysis  Sun Mar  4 10:09:16  2018
+AC Analysis  Sun Mar  4 21:28:28  2018
 --------------------------------------------------------------------------------
 Index   frequency       gm                              
 --------------------------------------------------------------------------------

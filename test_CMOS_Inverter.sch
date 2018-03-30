@@ -99,7 +99,7 @@ device=VOLTAGE_SOURCE
 T 51300 45000 5 10 1 1 0 0 1
 refdes=Vin
 T 51300 44600 5 10 1 1 0 0 1
-value=AC 1
+value=AC 1 DC Vdd/2
 }
 C 47100 45900 1 180 0 current_probe.sym
 {
