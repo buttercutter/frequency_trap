@@ -118,7 +118,7 @@ settype phase P11
 plot s11db ylimit -0.5 0
 plot P11
 
-print S11 > S11.log
+print S11 > S11_active_inductor.log
 *plot smithgrid S11
 *wrs2p s3046.s2p $ write touchstone vers. 1 file s3046.s2p
 .endc
@@ -127,9 +127,9 @@ N 46400 44100 45500 44100 4
 T 46400 44100 5 10 0 0 0 0 1
 netname=Ltest
 }
-N 50000 43000 50000 44100 4
-C 49800 42700 1 0 0 ground.sym
-N 49200 44100 50000 44100 4
+N 51600 43000 51600 44100 4
+C 51400 42700 1 0 0 ground.sym
+N 50800 44100 51600 44100 4
 C 46400 43800 1 0 0 active_inductor.sym
 {
 T 46095 43400 5 10 1 0 0 0 1
@@ -145,3 +145,13 @@ source=active_inductor.sch
 T 46400 43800 5 10 0 0 0 0 1
 model-name=ACTIVE_INDUCTOR
 }
+C 49900 44000 1 0 0 resistor-1.sym
+{
+T 50200 44400 5 10 0 0 0 0 1
+device=RESISTOR
+T 50200 44500 5 10 1 1 180 0 1
+refdes=R2
+T 50800 44500 5 10 1 1 180 0 1
+value=50
+}
+N 49900 44100 49200 44100 4
