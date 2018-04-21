@@ -3,9 +3,8 @@
 * Send requests or bug reports to jpd@noqsi.com
 Vtest Vtest GND dc 1
 +ac 1
-R2 1 GND 50      
 R1 Vtest Ltest 50      
-XGYRATOR 1 Ltest GYRATOR
+XGYRATOR Ltest GYRATOR
 .INCLUDE gyrator.net
 .control
 set noaskquit
