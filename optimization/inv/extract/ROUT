@@ -1,0 +1,12 @@
+# Info #
+Name:ROUT
+Symbol:ZROUT
+Unit:Ω
+Analysis type:AC
+Definition:Output Impedance
+Note:
+#
+
+# Commands #
+.measure AC #SYMBOL# rms par('v(OUT)/abs(i(VOUT))')
+#

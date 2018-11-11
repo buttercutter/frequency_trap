@@ -1,0 +1,14 @@
+There are a set of complexity levels. As far as I understand, you want to find the optimum output impedance. That does not necessarily imply that you should size the two branches exactly equal, nor that you want the DC points to be equal at the input. If all these are free, you have 13 free parameters.
+
+* Wp1,Wp2,Lp1,Lp2,Wn1,Wn2,Ln1,Ln2,Ip,In,Vinp,Vinn,Rx
+
+Then set the requirements
+
+* Lmin < L < Lmax (probably given by the pdk)
+* Wmin < W < Wmax (probably not given by the pdk, but area would dictate this)
+* 0 < I < Imax (given by a power specification)
+* 0 < Rx < Rmax (some MOhm, perhaps)
+* 0 < Vin < Vdd
+* 0 < Vdd < Vmax (whatever the process handles)
+
+Etc, then the number of variables can quickly be reduced by setting the two branches equal.
