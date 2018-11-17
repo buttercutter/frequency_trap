@@ -8,5 +8,5 @@ Note:
 #
 
 # Commands #
-.measure AC #SYMBOL# rms par('v(OUT)/abs(i(VOUT))')
+.measure AC #SYMBOL# rms par('v(OUT)/abs(i(VSS))')
 #

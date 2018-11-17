@@ -8,5 +8,5 @@ Note:current to supply times the supply voltage
 #
 
 # Commands #
-.MEASURE AC #SYMBOL# rms par('abs(i(vdd)*3)')
+.MEASURE AC #SYMBOL# rms par('abs(i(vdd))*v(vdd)')
 #

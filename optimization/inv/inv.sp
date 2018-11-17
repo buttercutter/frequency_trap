@@ -1,6 +1,6 @@
 *CMOS inverter https://electronics.stackexchange.com/questions/383552/measurement-of-output-impedance-of-a-cmos-inverter
 
-.PARAM V_SUPPLY = #V_SUPPLY#
+.PARAM V_SUPPLY = 3.3
 *.PARAM INP_FREQ = '#INP_FREQ#'
 *.PARAM INP_PERIOD = '1/INP_FREQ'
 *.PARAM NO_PERIODS = '4'
@@ -11,7 +11,7 @@
 .PARAM AC_STOP = 1E6
 
 *** *** SUPPLY VOLTAGES *** ***
-VDD VDD 0 {V_SUPPLY}
+VDD VDD 0 'V_SUPPLY'
 VSS VSS 0 0
 
 *** *** INPUT SIGNAL *** *** 
@@ -26,18 +26,18 @@ MN OUT IN VSS VSS N1 W='#WP#/2' L=#LMIN#
 ** CL OUT VSS 3p
 ** RIN IN VSS 1G
 
-CIN IN VSS 1
-Rf OUT IN 1E15
+CIN IN VSS 1E9
+Rf OUT IN 1E9
 ** Lf OUT IN 1E-15
 ** The input can be either biased with a DC source, or a DC feedback circuit. Using a DC feedback circuit (RC, inductor, whatsoever) makes only sense if there's no DC voltage source, see https://www.edaboard.com/showthread.php?377214-Noise-in-CMOS-Inverter&p=1617292&viewfull=1#post1617292  
 
 
 *** *** ROUT TEST SIGNAL WITH FIXED 1A CURRENT *** ***
 ** this is a way to measure or plot the current source IOUT in spice using 0V voltage source
-VOUT OUT VOUT 0
+*VOUT OUT VOUT 0
 *VOUT VOUT 0 '#V_OUT#'
 *** *** IOUT flows into the output of the circuit under test, so negative terminal node of this current source is OUT instead of VSS
-IOUT VSS VOUT AC 1
+IOUT VSS OUT AC 1
 *IOUT OUT VOUT AC 1
 
 
