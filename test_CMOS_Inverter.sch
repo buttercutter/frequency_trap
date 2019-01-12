@@ -72,13 +72,15 @@ value=.options TEMP=25
 .MODEL n1 NMOS
 .MODEL p1 PMOS
 }
-T 40900 44700 9 10 1 0 0 0 11
+T 41300 43400 9 10 1 0 0 0 13
 spice-epilog=.control
 save all @@m.x1.m1[gm]
-save all @@m.x1.m4[gm]
+save all @@m.x1.m2[gm]
+save all @@m.x1.m1[gds]
+save all @@m.x1.m2[gds]
+op
+print all
 ac lin 100 1 10G
-print @@m.x1.m1[gm]
-print @@m.x1.m4[gm]
 let Gm=(i(v_ip_out))/Vin
 plot Gm
 print Gm > Transconductance_of_CMOS_inverter.log
@@ -87,6 +89,10 @@ print Gm > Transconductance_of_CMOS_inverter.log
 T 42700 50100 9 14 1 0 0 0 1
 Measurement of Transconductance for X1 (CMOS Inverter) circuit block
 N 48900 46000 49600 46000 4
+{
+T 48900 46000 5 10 0 0 0 0 1
+netname=vout
+}
 C 50700 46300 1 180 0 INV1-1.sym
 {
 T 50100 45600 5 10 1 1 180 0 1

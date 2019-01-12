@@ -5,7 +5,7 @@ C 50000 46900 1 0 0 asic-pmos-1.sym
 T 51400 47700 5 8 0 0 0 0 1
 device=PMOS_TRANSISTOR
 T 50900 47700 5 10 1 1 0 0 1
-refdes=M4
+refdes=M2
 T 50900 47500 5 8 1 1 0 0 1
 model-name=P1
 T 50900 47200 5 8 1 0 0 0 1
