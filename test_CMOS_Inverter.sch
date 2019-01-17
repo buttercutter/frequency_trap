@@ -58,8 +58,9 @@ T 42400 49300 5 10 0 1 0 0 1
 device=directive
 T 42400 49400 5 10 1 1 0 0 1
 refdes=A5
-T 42400 49100 5 10 1 1 0 0 1
-value=.PARAM SUPPLY=3.3v
+T 42400 48900 5 10 1 1 0 0 2
+value=.PARAM SUPPLY=3.3v 
+.csparam vcd='SUPPLY'
 }
 C 42300 47900 1 0 0 spice-directive-1.sym
 {
@@ -72,7 +73,7 @@ value=.options TEMP=25
 .MODEL n1 NMOS
 .MODEL p1 PMOS
 }
-T 41300 43400 9 10 1 0 0 0 13
+T 40900 43300 9 10 1 0 0 0 19
 spice-epilog=.control
 save all @@m.x1.m1[gm]
 save all @@m.x1.m2[gm]
@@ -80,18 +81,24 @@ save all @@m.x1.m1[gds]
 save all @@m.x1.m2[gds]
 op
 print all
+dc vin 0 $&vcd 0.1
+plot vout
+let d1=deriv(vout)
+let d2=deriv(vin)
+let d1d2=d1/d2
+plot d1d2
 ac lin 100 1 10G
 let Gm=(i(v_ip_out))/Vin
 plot Gm
 print Gm > Transconductance_of_CMOS_inverter.log
 .endc
 
-T 42700 50100 9 14 1 0 0 0 1
-Measurement of Transconductance for X1 (CMOS Inverter) circuit block
+T 44700 50200 9 14 1 0 0 0 1
+Tests for X1 (CMOS Inverter) circuit block
 N 48900 46000 49600 46000 4
 {
 T 48900 46000 5 10 0 0 0 0 1
-netname=vout
+netname=Vout
 }
 C 50700 46300 1 180 0 INV1-1.sym
 {
